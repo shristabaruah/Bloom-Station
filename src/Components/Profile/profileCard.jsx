@@ -18,16 +18,17 @@ const ProfileCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.auth);
-  const {isOpen , onOpen , onClose } = useDisclosure()
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const logoutHandler = () => {
     dispatch(logout());
     navigate("/");
   };
+  // testing
 
   return (
     <>
-    <ProfileModal isOpen={isOpen} onClose={onClose} />
+      <ProfileModal isOpen={isOpen} onClose={onClose} />
       <Flex flexDir="column">
         <Flex
           mt="2rem"
@@ -46,11 +47,7 @@ const ProfileCard = () => {
           <Text>{user.bio}</Text>
 
           <Flex gap="2rem">
-            <Button
-              variant="outline"
-              borderColor="brand.400"
-              onClick={onOpen}
-            >
+            <Button variant="outline" borderColor="brand.400" onClick={onOpen}>
               Edit
             </Button>
             <IconButton
