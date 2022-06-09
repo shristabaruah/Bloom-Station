@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../Redux/slices/authSlice";
 import { PostCard } from "../PostCard/PostCard";
 
-const ProfileCard = ({onOpenProfile}) => {
+const ProfileCard = ({ onOpenProfile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.auth);
@@ -41,7 +41,13 @@ const ProfileCard = ({onOpenProfile}) => {
           <Text>Aspiring web developer</Text>
 
           <Flex gap="2rem">
-            <Button variant="outline" borderColor="brand.400"  onClick={onOpenProfile}>Edit</Button>
+            <Button
+              variant="outline"
+              borderColor="brand.400"
+              onClick={onOpenProfile}
+            >
+              Edit
+            </Button>
             <IconButton
               variant="outline"
               color="red.300"
