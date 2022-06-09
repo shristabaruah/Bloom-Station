@@ -56,7 +56,7 @@ const ProfileModal = ({ isOpen, onClose }) => {
               />
             </Flex>
             <Flex justifyContent="center">
-              <Button variant="brand"onClick={editHandler} >Save</Button>
+              <Button variant="brand"onClick={editHandler}>Save</Button>
             </Flex>
           </Box>
         </ModalBody>
