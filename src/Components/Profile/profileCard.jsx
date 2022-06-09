@@ -5,24 +5,29 @@ import {
   Heading,
   IconButton,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { MdLogout } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../Redux/slices/authSlice";
 import { PostCard } from "../PostCard/PostCard";
+import { ProfileModal } from "./ProfileModal";
 
-const ProfileCard = ({ onOpenProfile }) => {
+const ProfileCard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((store) => store.auth);
+  const {isOpen , onOpen , onClose } = useDisclosure()
 
   const logoutHandler = () => {
     dispatch(logout());
     navigate("/");
   };
+
   return (
     <>
+    <ProfileModal isOpen={isOpen} onClose={onClose} />
       <Flex flexDir="column">
         <Flex
           mt="2rem"
@@ -38,13 +43,13 @@ const ProfileCard = ({ onOpenProfile }) => {
           <Heading as="h4" size="md">
             Guest User
           </Heading>
-          <Text>Aspiring web developer</Text>
+          <Text>{user.bio}</Text>
 
           <Flex gap="2rem">
             <Button
               variant="outline"
               borderColor="brand.400"
-              onClick={onOpenProfile}
+              onClick={onOpen}
             >
               Edit
             </Button>

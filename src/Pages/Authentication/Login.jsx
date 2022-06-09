@@ -37,10 +37,10 @@ const Login = () => {
     setUser((prev) => ({ ...prev, [name]: value }));
   };
 
-  const loginHandler = (e) => {
+  const loginHandler = async  (e) => {
     if (user.username && user.password) {
       e.preventDefault();
-      const response = dispatch(login(user));
+      const response = await dispatch(login(user));
       if (response?.payload?.status === 200) {
         if (user.rememberMe) {
           localStorage.setItem("token", response.payload.data.encodedToken);

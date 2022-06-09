@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, signup } from "../AsyncThunk/authThunk";
+import { edit, login, signup } from "../AsyncThunk/authThunk";
 
 const initialState = {
   user: null,
@@ -41,9 +41,20 @@ const authSlice = createSlice({
       state.token = action.payload.data.encodedToken;
     },
     [signup.rejected]: (state, action) => {
-      // state.error = action.error.message;
-      console.error(action.error.message)
+      state.isLoading=false;
+      console.error(action.error.message);
     },
+    [edit.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [edit.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload.data.user;
+    },
+    [edit.rejected]:(state,action)=>{
+      state.isLoading=false;
+      console.error(action.error.message)
+    }
   },
 });
 

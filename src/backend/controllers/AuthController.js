@@ -37,6 +37,7 @@ export const signupHandler = function (schema, request) {
       username,
       password,
       ...rest,
+      bio:"",
       followers: [],
       following: [],
       bookmarks: [],
