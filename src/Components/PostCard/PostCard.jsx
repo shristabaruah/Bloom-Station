@@ -138,7 +138,7 @@ const PostCard = ({ img }) => {
               size="sm"
               mr="7"
             >
-              POST
+              REPLY
             </Button>
           </InputRightElement>
         </InputGroup>
