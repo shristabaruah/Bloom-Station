@@ -63,8 +63,8 @@ const ProfileCard = () => {
           </Flex>
           <Flex gap="4px">
             <Text as="span"> 2 post</Text>
-            <Text as="span"> 1 Follwers </Text>
-            <Text as="span"> 2 Follwing</Text>
+            <Text as="span"> 3 Follwers </Text>
+            <Text as="span"> 6 Follwing</Text>
           </Flex>
         </Flex>
         <PostCard />
