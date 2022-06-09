@@ -71,7 +71,7 @@ const Sidebar = () => {
           fontWeight="bold"
           color={`${pathname === "/profile" ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/profile")}
         >
           <ListIcon
             as={FaUserCircle}
