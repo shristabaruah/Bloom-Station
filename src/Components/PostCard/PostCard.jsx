@@ -22,7 +22,6 @@ import { AiFillLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
 
 const PostCard = ({ img,post }) => {
-  console.log(post)
   return (
     <Flex
       mt="5"
