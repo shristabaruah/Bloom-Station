@@ -5,3 +5,4 @@ export {PostCard} from "./PostCard/PostCard";
 export {PostBox} from "./PostBox/PostBox";
 export {ProfileCard} from "./Profile/Card-Profile";
 export {ProfileModal} from "./Profile/Edit-Profile-Modal";
+export {Loader} from "./Loader/Loader";

@@ -15,14 +15,14 @@ import {
   PopoverContent,
   PopoverTrigger,
   Text,
-  Tooltip,
 } from "@chakra-ui/react";
 import { BsThreeDots, BsFillBookmarkFill } from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
 
-const PostCard = ({ img }) => {
+const PostCard = ({ img,post }) => {
+  console.log(post)
   return (
     <Flex
       mt="5"
@@ -36,9 +36,9 @@ const PostCard = ({ img }) => {
     >
       <Flex justifyContent="space-between">
         <Flex gap="1" justifyContent="space-evenly">
-          <Avatar size="sm" />
+          <Avatar size="sm" src={post?.avatarURL} />
           <Heading as="h3" size="md">
-            John Doe
+            {post?.firstName} {post?.lastName}
           </Heading>
         </Flex>
         <Popover>
@@ -78,12 +78,7 @@ const PostCard = ({ img }) => {
 
       {/* PostContent */}
       <Box>
-        <Text mb="0.5rem">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui hic dolor
-          enim natus beatae praesentium. Impedit nisi eligendi blanditiis
-          dignissimos tenetur, maiores repellendus magnam corporis ullam
-          adipisci? Tenetur, deleniti fugit.
-        </Text>
+        <Text mb="0.5rem">{post?.content}</Text>
         {img ? (
           <Box>
             <Image src={img} alt="img" h="300" w="full" objectFit="cover" />
@@ -99,26 +94,25 @@ const PostCard = ({ img }) => {
         borderColor="grey.200"
         justifyContent="space-between"
       >
-        <Tooltip label="Like">
-          <IconButton
-            icon={<AiFillLike />}
-            _focus={{ borderColor: "transparent" }}
-            size="md"
-            fontSize="1.5rem"
-            borderRadius="50"
-            color="brand.400"
-          />
-        </Tooltip>
-        <Tooltip label="Bookmark">
-          <IconButton
-            icon={<BsFillBookmarkFill />}
-            _focus={{ borderColor: "transparent" }}
-            size="md"
-            fontSize="1.5rem"
-            borderRadius="50"
-            color="brand.400"
-          />
-        </Tooltip>
+        <Box fontSize="1rem" color="brand.500" >
+        <IconButton
+          icon={<AiFillLike />}
+          _focus={{ borderColor: "transparent" }}
+          size="md"
+          fontSize="1.5rem"
+          borderRadius="50"
+          color="brand.400"
+        />
+        {post?.likes.likeCount ? post?.likes.likeCount : null}
+        </Box>
+        <IconButton
+          icon={<BsFillBookmarkFill />}
+          _focus={{ borderColor: "transparent" }}
+          size="md"
+          fontSize="1.5rem"
+          borderRadius="50"
+          color="brand.400"
+        />
       </Flex>
       <Flex gap="2">
         <Avatar size="sm" />
@@ -143,7 +137,11 @@ const PostCard = ({ img }) => {
           </InputRightElement>
         </InputGroup>
       </Flex>
-      <Comment />
+      {post?.comments?.length > 0
+        ? post?.comments.map((comment) => (
+            <Comment key={comment._id} comment={comment} />
+          ))
+        : null}
     </Flex>
   );
 };

@@ -16,16 +16,17 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 
-const Comment = () => {
+const Comment = ({ comment }) => {
   return (
     <Flex mt="2" borderRadius="lg" justifyContent="space-between">
       <Flex gap="2">
-        <Avatar size="sm" />
+        <Avatar size="sm" src={comment.avatarURL} />
         <Box>
           <Heading as="h4" size="md">
-            John Doe
+            {comment.firstName}
+            {comment.lastName}
           </Heading>
-          <Text>lorem ipsum </Text>
+          <Text>{comment.text} </Text>
         </Box>
       </Flex>
       <Popover>

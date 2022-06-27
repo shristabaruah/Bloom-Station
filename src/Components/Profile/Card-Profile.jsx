@@ -63,7 +63,6 @@ import {
               <Text as="span"> 6 Follwing</Text>
             </Flex>
           </Flex>
-          <PostCard />
         </Flex>
       </>
     );
