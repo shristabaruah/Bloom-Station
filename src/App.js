@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Login, Profile, Signup } from "./Pages";
+import { Explore, Home, Login, Profile, Signup } from "./Pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequireAuth } from "./RequireAuth/requireAuth";
@@ -29,15 +29,25 @@ function App() {
               <Home />
             </RequireAuth>
           }
+          
         />
         <Route
-          path="/profile"
+          path="/explore"
+          element={
+            <RequireAuth>
+              <Explore />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/profile/:username"
           element={
             <RequireAuth>
               <Profile />
             </RequireAuth>
           }
         />
+
       </Routes>
     </>
   );

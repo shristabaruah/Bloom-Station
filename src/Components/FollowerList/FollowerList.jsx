@@ -8,9 +8,27 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { BsFillPersonPlusFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../../Redux/AsyncThunk";
 
 const FollowerList = () => {
+  const { user } = useSelector((store) => store.auth);
+  const { users } = useSelector((store) => store.users);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+  const otherUsers = users.filter((item) => item.username !== user.username);
+
+  const suggestedFollowers = users.filter(
+    (item) =>
+      item.username !== user.username &&
+      !user.following.some((user) => user.username === item.username)
+  );
+
   return (
     <Box
       position="sticky"
@@ -28,61 +46,25 @@ const FollowerList = () => {
         People you may follow{" "}
       </Heading>
       <UnorderedList listStyleType="none" mt="4">
-        <ListItem mb="4">
-          <Flex alignItems="center" gap="2">
-            <Avatar size="sm" />
-            <Flex flexDir="column">
-              <Box>
-                <Heading as="h4" size="sm">
-                  Olive yue
-                </Heading>
-                <Text>@oliveY</Text>
-              </Box>
+        {suggestedFollowers.map((user) => (
+          <ListItem mb="4" key={user.id}>
+            <Flex alignItems="center" gap="2">
+              <Avatar size="sm" src={user.avatarURL} />
+              <Flex flexDir="column">
+                <Box>
+                  <Heading as="h4" size="sm">
+                    {user.firstName}
+                    {user.lastName}
+                  </Heading>
+                  <Text>@{user.username}</Text>
+                </Box>
+              </Flex>
+              <Button leftIcon={<BsFillPersonPlusFill />} variant="brand">
+                Follow
+              </Button>
             </Flex>
-            <Button leftIcon={<BsFillPersonPlusFill />} variant="brand">
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-
-        <ListItem mb="4">
-          <Flex alignItems="center" gap="2">
-            <Avatar size="sm" />
-            <Flex flexDir="column">
-              <Box>
-                <Heading as="h4" size="sm">
-                  Olive yue
-                </Heading>
-                <Text>@oliveY</Text>
-              </Box>
-            </Flex>
-            <Button
-              leftIcon={<BsFillPersonPlusFill color="brand.300" />}
-              variant="brand"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-        <ListItem mb="4">
-          <Flex alignItems="center" gap="2">
-            <Avatar size="sm" />
-            <Flex flexDir="column">
-              <Box>
-                <Heading as="h4" size="sm">
-                  Olive yue
-                </Heading>
-                <Text>@oliveY</Text>
-              </Box>
-            </Flex>
-            <Button
-              leftIcon={<BsFillPersonPlusFill color="brand.300" />}
-              variant="brand"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
+          </ListItem>
+        ))}
       </UnorderedList>
     </Box>
   );

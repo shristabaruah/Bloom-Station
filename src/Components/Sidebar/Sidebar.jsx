@@ -9,9 +9,11 @@ import { logo } from "../../Assets";
 import { MdHome, MdOutlineBookmark } from "react-icons/md";
 import { FaHashtag, FaUserCircle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
-  const pathname = useLocation();
+  const { pathname } = useLocation();
+  const { user } = useSelector((store) => store.auth);
   const navigate = useNavigate();
   return (
     <Box position="sticky" top="16px" h="fit-content" m="1rem" ml="3rem">
@@ -43,7 +45,7 @@ const Sidebar = () => {
           fontWeight="bold"
           color={`${pathname === "/explore" ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/explore")}
         >
           <ListIcon
             as={FaHashtag}
@@ -71,7 +73,7 @@ const Sidebar = () => {
           fontWeight="bold"
           color={`${pathname === "/profile" ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/profile")}
+          onClick={() => navigate(`/profile/${user.username}`)}
         >
           <ListIcon
             as={FaUserCircle}
