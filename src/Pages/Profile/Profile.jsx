@@ -18,7 +18,6 @@ const Profile = () => {
   const [userPost, setUserPost] = useState([]);
 
   const { posts} = useSelector((store) => store.post);
-  console.log(userPost.length > 0)
 
   useEffect(() => {
     getUserPost(setUserPost, username);
