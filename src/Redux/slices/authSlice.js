@@ -18,6 +18,9 @@ const authSlice = createSlice({
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     },
+    updateUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: {
     [login.pending]: (state) => {
@@ -41,7 +44,7 @@ const authSlice = createSlice({
       state.token = action.payload.data.encodedToken;
     },
     [signup.rejected]: (state, action) => {
-      state.isLoading=false;
+      state.isLoading = false;
       console.error(action.error.message);
     },
     [edit.pending]: (state) => {
@@ -51,12 +54,12 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.user = action.payload.data.user;
     },
-    [edit.rejected]:(state,action)=>{
-      state.isLoading=false;
-      console.error(action.error.message)
-    }
+    [edit.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.error.message);
+    },
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logout , updateUser} = authSlice.actions;
 export const { reducer: authReducer } = authSlice;
