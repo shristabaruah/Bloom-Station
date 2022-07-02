@@ -31,7 +31,7 @@ const Sidebar = () => {
           fontWeight="bold"
           color={`${pathname === "/home" ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/home")}
         >
           <ListIcon
             as={MdHome}
