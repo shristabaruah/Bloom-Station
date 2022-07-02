@@ -14,7 +14,7 @@ const Explore = () => {
   }, []);
 
   return (
-    <Flex justifyContent="space-between" mt="1rem">
+    <Flex justifyContent="justify-center" mt="1rem">
       <Sidebar />
       <Flex flexDir="column">
         {isLoading ? (

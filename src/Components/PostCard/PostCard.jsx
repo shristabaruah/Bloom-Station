@@ -20,8 +20,13 @@ import { BsThreeDots, BsFillBookmarkFill } from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { AiFillLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const PostCard = ({ img,post }) => {
+const PostCard = ({ img, post }) => {
+  const navigate = useNavigate();
+  const { user, token } = useSelector((store) => store.auth);
+
   return (
     <Flex
       mt="5"
@@ -34,8 +39,18 @@ const PostCard = ({ img,post }) => {
       maxW="32rem"
     >
       <Flex justifyContent="space-between">
-        <Flex gap="1" justifyContent="space-evenly">
-          <Avatar size="sm" src={post?.avatarURL} />
+        <Flex
+          gap="1"
+          justifyContent="space-evenly"
+          cursor="pointer"
+          onClick={() => navigate(`/profile/${post.username}`)}
+        >
+          <Avatar
+            size="sm"
+            src={
+              post.username === user.username ? user.avatarURL : post.avatarURL
+            }
+          />
           <Heading as="h3" size="md">
             {post?.firstName} {post?.lastName}
           </Heading>
@@ -93,16 +108,16 @@ const PostCard = ({ img,post }) => {
         borderColor="grey.200"
         justifyContent="space-between"
       >
-        <Box fontSize="1rem" color="brand.500" >
-        <IconButton
-          icon={<AiFillLike />}
-          _focus={{ borderColor: "transparent" }}
-          size="md"
-          fontSize="1.5rem"
-          borderRadius="50"
-          color="brand.400"
-        />
-        {post?.likes.likeCount ? post?.likes.likeCount : null}
+        <Box fontSize="1rem" color="brand.500">
+          <IconButton
+            icon={<AiFillLike />}
+            _focus={{ borderColor: "transparent" }}
+            size="md"
+            fontSize="1.5rem"
+            borderRadius="50"
+            color="brand.400"
+          />
+          {post?.likes.likeCount ? post?.likes.likeCount : null}
         </Box>
         <IconButton
           icon={<BsFillBookmarkFill />}

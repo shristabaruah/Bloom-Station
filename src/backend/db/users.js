@@ -13,7 +13,7 @@ export const users = [
     password: "test123",
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654784485/i3lyoqgpgjhtaqgqkcqe.jpg",
-    bio: "",
+    bio: "Hello everyone",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [

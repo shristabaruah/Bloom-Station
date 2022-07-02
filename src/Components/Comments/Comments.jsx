@@ -15,14 +15,33 @@ import {
 } from "@chakra-ui/react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Comment = ({ comment }) => {
+  const navigate = useNavigate();
+  const { user, token } = useSelector((store) => store.auth);
+
   return (
     <Flex mt="2" borderRadius="lg" justifyContent="space-between">
       <Flex gap="2">
-        <Avatar size="sm" src={comment.avatarURL} />
+        <Avatar
+          size="sm"
+          src={
+            comment.username === user.username
+              ? user.avatarURL
+              : comment.avatarURL
+          }
+          onClick={() => navigate(`/profile/${comment.username}`)}
+          cursor="pointer"
+        />
         <Box>
-          <Heading as="h4" size="md">
+          <Heading
+            as="h4"
+            size="md"
+            onClick={() => navigate(`/profile/${comment.username}`)}
+            cursor="pointer"
+          >
             {comment.firstName}
             {comment.lastName}
           </Heading>
