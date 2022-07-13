@@ -10,8 +10,7 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import { editPost } from "../../Redux/AsyncThunk/postThunk";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
 import { toast } from "react-toastify";
 
 const EditPostModal = ({
