@@ -1,5 +1,5 @@
-import { Flex, useRadio } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Flex } from "@chakra-ui/react";
+import { useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FollowerList,
@@ -12,13 +12,14 @@ import { getPost } from "../../Redux/AsyncThunk";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   const { user } = useSelector((store) => store.auth);
   const { posts, isLoading } = useSelector((store) => store.post);
 
   useEffect(() => {
     dispatch(getPost());
   }, [dispatch]);
-  
+
   const postFeed = posts.filter(
     (item) =>
       user.username === item.username ||
@@ -32,7 +33,12 @@ const Home = () => {
         {isLoading ? (
           <Loader />
         ) : postFeed.length > 0 ? (
-          postFeed.map((post) => <PostCard key={post._id} post={post} />)
+          postFeed.reverse().map((post) => (
+            <PostCard
+              key={post._id}
+              post={post}
+            />
+          ))
         ) : (
           "No post"
         )}

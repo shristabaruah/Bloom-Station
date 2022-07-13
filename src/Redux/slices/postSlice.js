@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPost } from "../AsyncThunk/postThunk";
+import { addPost, deletePost, editPost, getPost } from "../AsyncThunk/postThunk";
 
 const initialState = {
   posts: [],
@@ -20,7 +20,40 @@ const postSlice = createSlice({
     },
     [getPost.rejected]: (state, action) => {
       state.isLoading = false;
-      console.error(action.error.message);
+      console.error(action.payload.data.errors[0]);
+    },
+    [addPost.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addPost.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [addPost.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [deletePost.pending]:(state)=>{
+      state.isLoading = true;
+    },
+    [deletePost.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [deletePost.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [editPost.pending]:(state)=>{
+      state.isLoading = true;
+    },
+    [editPost.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [editPost.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
     },
   },
 });

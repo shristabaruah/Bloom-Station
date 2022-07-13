@@ -22,13 +22,44 @@ import { AiFillLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { deletePost } from "../../Redux/AsyncThunk/postThunk";
+import { EditPostModal } from "../../Components/EditPostModal/EditPostModal";
+import {  useDisclosure } from "@chakra-ui/react";
 
-const PostCard = ({ img, post }) => {
+
+const PostCard = ({ img, post  }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [editedPost, setEditedPost] = useState(null);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { user, token } = useSelector((store) => store.auth);
 
+  const isCurrentUser = user.username === post.username;
+
+  const deletePostHandler = async () => {
+    try {
+      const response = await dispatch(deletePost({ post, token }));
+      if (response.payload.status === 201) {
+        toast.info("Post deleted sucessfully");
+      } else {
+        toast.error(`${response.payload.data.errors[0]}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const EditedPostHandler = (post)=>{
+    setEditedPost(post)
+    onOpen()
+  }
+
   return (
-    <Flex
+    <>    <Flex
       mt="5"
       flexDir="column"
       bgColor="grey.100"
@@ -55,39 +86,43 @@ const PostCard = ({ img, post }) => {
             {post?.firstName} {post?.lastName}
           </Heading>
         </Flex>
-        <Popover>
-          <PopoverTrigger>
-            <IconButton
-              icon={<BsThreeDots />}
-              bgColor="transparent"
-              borderRadius="50"
-              _hover={{ bgColor: "brand.50", borderRadius: "50" }}
-            />
-          </PopoverTrigger>
-          <PopoverContent
-            maxW="fit-content"
-            p="6"
-            _focus={{ borderColor: "transparent" }}
-            bgColor="grey.200"
-          >
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <Button
-              leftIcon={<MdModeEdit />}
-              variant="ghost"
+        {isCurrentUser && (
+          <Popover>
+            <PopoverTrigger>
+              <IconButton
+                icon={<BsThreeDots />}
+                bgColor="transparent"
+                borderRadius="50"
+                _hover={{ bgColor: "brand.50", borderRadius: "50" }}
+              />
+            </PopoverTrigger>
+            <PopoverContent
+              maxW="fit-content"
+              p="6"
               _focus={{ borderColor: "transparent" }}
+              bgColor="grey.200"
             >
-              Edit
-            </Button>
-            <Button
-              leftIcon={<MdDelete />}
-              variant="ghost"
-              _focus={{ borderColor: "transparent" }}
-            >
-              Delete
-            </Button>
-          </PopoverContent>
-        </Popover>
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <Button
+                leftIcon={<MdModeEdit />}
+                variant="ghost"
+                _focus={{ borderColor: "transparent" }}
+                onClick={()=>EditedPostHandler(post)}
+              >
+                Edit
+              </Button>
+              <Button
+                leftIcon={<MdDelete />}
+                variant="ghost"
+                _focus={{ borderColor: "transparent" }}
+                onClick={deletePostHandler}
+              >
+                Delete
+              </Button>
+            </PopoverContent>
+          </Popover>
+        )}
       </Flex>
 
       {/* PostContent */}
@@ -157,6 +192,16 @@ const PostCard = ({ img, post }) => {
           ))
         : null}
     </Flex>
+    {isOpen ? (
+          <EditPostModal
+            isOpen={isOpen}
+            onClose={onClose}
+            editedPost={editedPost}
+            setEditedPost={setEditedPost}
+            
+          />
+        ) : null}
+    </>
   );
 };
 
