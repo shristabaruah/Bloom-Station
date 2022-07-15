@@ -33,7 +33,7 @@ const Bookmark = () => {
             {isLoading ? (
               <Loader />
             ) : null}
-            {bookmarkedPosts !== 0 ? (
+            {bookmarkedPosts.length !== 0 ? (
               bookmarkedPosts.map((post) => (
                 <PostCard key={post._id} post={post} />
               ))
