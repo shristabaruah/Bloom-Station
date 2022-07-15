@@ -1,9 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addPost, deletePost, editPost, getPost } from "../AsyncThunk/postThunk";
+import {
+  addPost,
+  deletePost,
+  dislikePost,
+  editPost,
+  getPost,
+  likePost,
+} from "../AsyncThunk/postThunk";
 
 const initialState = {
   posts: [],
   isLoading: false,
+  isLikeLoading: false,
 };
 
 const postSlice = createSlice({
@@ -33,7 +41,7 @@ const postSlice = createSlice({
       state.isLoading = false;
       console.error(action.payload.data.errors[0]);
     },
-    [deletePost.pending]:(state)=>{
+    [deletePost.pending]: (state) => {
       state.isLoading = true;
     },
     [deletePost.fulfilled]: (state, action) => {
@@ -44,7 +52,7 @@ const postSlice = createSlice({
       state.isLoading = false;
       console.error(action.payload.data.errors[0]);
     },
-    [editPost.pending]:(state)=>{
+    [editPost.pending]: (state) => {
       state.isLoading = true;
     },
     [editPost.fulfilled]: (state, action) => {
@@ -53,6 +61,28 @@ const postSlice = createSlice({
     },
     [editPost.rejected]: (state, action) => {
       state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [likePost.pending]: (state) => {
+      state.isLikeLoading = true;
+    },
+    [likePost.fulfilled]: (state, action) => {
+      state.isLikeLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [likePost.rejected]: (state, action) => {
+      state.isLikeLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [dislikePost.pending]: (state) => {
+      state.isLikeLoading = true;
+    },
+    [dislikePost.fulfilled]: (state, action) => {
+      state.isLikeLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [dislikePost.rejected]: (state, action) => {
+      state.isLikeLoading = false;
       console.error(action.payload.data.errors[0]);
     },
   },

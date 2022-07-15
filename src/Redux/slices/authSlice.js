@@ -1,11 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { edit, login, signup } from "../AsyncThunk/authThunk";
+import {
+  addToBookmark,
+  edit,
+  getUserBookmarks,
+  login,
+  removeBookmark,
+  signup,
+} from "../AsyncThunk/authThunk";
 
 const initialState = {
   user: null,
   token: null,
   isLoading: false,
-  // error: null,
+  bookmarks: [],
+  isBookmarkLoading: false,
+  bookmarkStatus: "idle",
 };
 
 const authSlice = createSlice({
@@ -33,7 +42,7 @@ const authSlice = createSlice({
     },
     [login.rejected]: (state, action) => {
       state.isLoading = false;
-      state.error = action.error.message;
+      console.error(action.payload.data.errors[0]);
     },
     [signup.pending]: (state) => {
       state.isLoading = true;
@@ -45,7 +54,7 @@ const authSlice = createSlice({
     },
     [signup.rejected]: (state, action) => {
       state.isLoading = false;
-      console.error(action.error.message);
+      console.error(action.payload.data.errors[0]);
     },
     [edit.pending]: (state) => {
       state.isLoading = true;
@@ -56,10 +65,43 @@ const authSlice = createSlice({
     },
     [edit.rejected]: (state, action) => {
       state.isLoading = false;
-      console.error(action.error.message);
+      console.error(action.payload.data.errors[0]);
+    },
+    [addToBookmark.pending]: (state) => {
+      state.isBookmarkLoading = true;
+    },
+    [addToBookmark.fulfilled]: (state, action) => {
+      state.isBookmarkloading = false;
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [addToBookmark.rejected]: (state, action) => {
+      state.isBookmarkloading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [removeBookmark.pending]: (state) => {
+      state.isBookmarkLoading = true;
+    },
+    [removeBookmark.fulfilled]: (state, action) => {
+      state.isBookmarkloading = false;
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [removeBookmark.rejected]: (state, action) => {
+      state.isBookmarkloading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [getUserBookmarks.pending]: (state) => {
+      state.bookmarkStatus = "pending";
+    },
+    [getUserBookmarks.fulfilled]: (state, action) => {
+      state.bookmarkStatus = "resolved";
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [getUserBookmarks.rejected]: (state, action) => {
+      state.bookmarkStatus = "rejected";
+      console.error(action.payload.data.errors[0]);
     },
   },
 });
 
-export const { logout , updateUser} = authSlice.actions;
+export const { logout, updateUser } = authSlice.actions;
 export const { reducer: authReducer } = authSlice;
