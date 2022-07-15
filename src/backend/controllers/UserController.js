@@ -122,9 +122,7 @@ export const bookmarkPostHandler = function (schema, request) {
         }
       );
     }
-    const isBookmarked = user.bookmarks.some(
-      (currPost) => currPost._id === postId
-    );
+    const isBookmarked = user.bookmarks.some((curr) => curr === postId);
     if (isBookmarked) {
       return new Response(
         400,
@@ -132,7 +130,7 @@ export const bookmarkPostHandler = function (schema, request) {
         { errors: ["This Post is already bookmarked"] }
       );
     }
-    user.bookmarks.push(post);
+    user.bookmarks.push(post._id);
     this.db.users.update(
       { _id: user._id },
       { ...user, updatedAt: formatDate() }
@@ -169,15 +167,11 @@ export const removePostFromBookmarkHandler = function (schema, request) {
         }
       );
     }
-    const isBookmarked = user.bookmarks.some(
-      (currPost) => currPost._id === postId
-    );
+    const isBookmarked = user.bookmarks.some((curr) => curr === postId);
     if (!isBookmarked) {
       return new Response(400, {}, { errors: ["Post not bookmarked yet"] });
     }
-    const filteredBookmarks = user.bookmarks.filter(
-      (currPost) => currPost._id !== postId
-    );
+    const filteredBookmarks = user.bookmarks.filter((curr) => curr !== postId);
     user = { ...user, bookmarks: filteredBookmarks };
     this.db.users.update(
       { _id: user._id },
@@ -243,7 +237,7 @@ export const followUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { user: updatedUser, followUser: updatedFollowUser, users: this.db.users  }
+      { user: updatedUser, followUser: updatedFollowUser, users: this.db.users }
     );
   } catch (error) {
     return new Response(
@@ -308,7 +302,7 @@ export const unfollowUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { user: updatedUser, followUser: updatedFollowUser ,  users: this.db.users  }
+      { user: updatedUser, followUser: updatedFollowUser, users: this.db.users }
     );
   } catch (error) {
     return new Response(

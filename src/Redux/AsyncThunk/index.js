@@ -1,4 +1,11 @@
-export { login, signup, edit } from "./authThunk";
+export {
+  login,
+  signup,
+  edit,
+  addToBookmark,
+  removeBookmark,
+  getUserBookmarks,
+} from "./authThunk";
 export {
   getPost,
   addPost,

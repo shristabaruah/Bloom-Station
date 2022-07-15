@@ -4,6 +4,7 @@ import {
   ListIcon,
   ListItem,
   UnorderedList,
+  Heading
 } from "@chakra-ui/react";
 import { logo } from "../../Assets";
 import { MdHome, MdOutlineBookmark } from "react-icons/md";
@@ -17,7 +18,8 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <Box position="sticky" top="16px" h="fit-content" m="1rem" ml="3rem">
-      <Image align="center" src={logo} h="50" />
+      {/* <Image align="center" src={logo} h="50" /> */}
+      <Heading  color="brand.400"  >Bloom-Station</Heading>
 
       <UnorderedList
         listStyleType="none"
@@ -57,9 +59,9 @@ const Sidebar = () => {
         <ListItem
           cursor="pointer"
           fontWeight="bold"
-          color={`${pathname === "/bookmark" ? "brand.500" : "brand.200"}`}
+          color={`${pathname === "/bookmarks" ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/bookmarks")}
         >
           <ListIcon
             as={MdOutlineBookmark}
@@ -71,7 +73,7 @@ const Sidebar = () => {
         <ListItem
           cursor="pointer"
           fontWeight="bold"
-          color={`${pathname === "/profile" ? "brand.500" : "brand.200"}`}
+          color={`${pathname.includes("/profile")  ? "brand.500" : "brand.200"}`}
           _hover={{ color: "brand.500", fontWeight: "bold" }}
           onClick={() => navigate(`/profile/${user.username}`)}
         >

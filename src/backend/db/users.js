@@ -14,6 +14,7 @@ export const users = [
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654784485/i3lyoqgpgjhtaqgqkcqe.jpg",
     bio: "Hello everyone",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -36,7 +37,7 @@ export const users = [
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785799/vna0t0qzkaltov3zfoem.jpg",
       },
     ],
-    followers:[
+    followers: [
       {
         _id: "43e41e83-039f-4cd2-bca4-9c3c8c4af501",
         firstName: "Robyn",
@@ -64,6 +65,7 @@ export const users = [
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654784485/i3lyoqgpgjhtaqgqkcqe.jpg",
     bio: "On my way",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -123,6 +125,7 @@ export const users = [
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785837/y30sp4k6wbihpijaqlkm.jpg",
     bio: "A star is born ",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -172,6 +175,7 @@ export const users = [
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785801/ajivqjoqm8rqh1ffyxz4.jpg",
     bio: "Love is great Love is fine",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [
@@ -221,6 +225,7 @@ export const users = [
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785799/vna0t0qzkaltov3zfoem.jpg",
     bio: "Whats up ?",
+    bookmarks: [],
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [

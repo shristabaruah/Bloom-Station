@@ -17,7 +17,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsThreeDots, BsFillBookmarkFill } from "react-icons/bs";
+import { BsThreeDots, BsFillBookmarkFill , BsBookmark} from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
@@ -31,6 +31,10 @@ import {
   likePost,
 } from "../../Redux/AsyncThunk/postThunk";
 import { EditPostModal } from "../../Components/EditPostModal/EditPostModal";
+import {
+  addToBookmark,
+  removeBookmark,
+} from "../../Redux/AsyncThunk/authThunk";
 
 const PostCard = ({ img, post }) => {
   const navigate = useNavigate();
@@ -38,7 +42,9 @@ const PostCard = ({ img, post }) => {
   const [editedPost, setEditedPost] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { user, token } = useSelector((store) => store.auth);
+  const { user, token, bookmarks, isBookmarkLoading } = useSelector(
+    (store) => store.auth
+  );
 
   const isCurrentUser = user.username === post.username;
 
@@ -73,11 +79,19 @@ const PostCard = ({ img, post }) => {
   const likeMessage = () => {
     if (post?.likes.likeCount === 1) {
       return `${post?.likes.likeCount} like`;
-    }
-    {
+    } else {
       return `${post?.likes.likeCount} likes`;
     }
   };
+
+  const isBookmarked = bookmarks.some((curr) => curr === post._id);
+
+  const bookmarkHandler = async (postId) => {
+    isBookmarked
+      ? await dispatch(removeBookmark({ postId, token }))
+      : await dispatch(addToBookmark({ postId, token }));
+  };
+
   return (
     <>
       {" "}
@@ -180,12 +194,13 @@ const PostCard = ({ img, post }) => {
             {post?.likes.likeCount > 0 ? likeMessage() : null}
           </Box>
           <IconButton
-            icon={<BsFillBookmarkFill />}
+            icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark/>}
             _focus={{ borderColor: "transparent" }}
             size="md"
             fontSize="1.5rem"
             borderRadius="50"
             color="brand.400"
+            onClick={() => bookmarkHandler(post?._id)}
           />
         </Flex>
         <Flex gap="2">
