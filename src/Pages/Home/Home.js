@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import { useEffect  } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   FollowerList,
@@ -30,18 +30,12 @@ const Home = () => {
       <Sidebar />
       <Flex flexDir="column">
         <PostBox />
-        {isLoading ? (
-          <Loader />
-        ) : postFeed.length > 0 ? (
-          postFeed.reverse().map((post) => (
-            <PostCard
-              key={post._id}
-              post={post}
-            />
-          ))
-        ) : (
-          "No post"
-        )}
+        {isLoading ? <Loader /> : null}{" "}
+        {postFeed.length > 0
+          ? postFeed
+              .reverse()
+              .map((post) => <PostCard key={post._id} post={post} />)
+          : "No post"}
       </Flex>
       <FollowerList />
     </Flex>

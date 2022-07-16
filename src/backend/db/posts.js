@@ -33,7 +33,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785801/ajivqjoqm8rqh1ffyxz4.jpg",
 
-        text: "Interesting",
+        commentData: "Interesting",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -47,7 +47,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785837/y30sp4k6wbihpijaqlkm.jpg",
 
-        text: "Wow!",
+        commentData: "Wow!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -79,7 +79,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785837/y30sp4k6wbihpijaqlkm.jpg",
 
-        text: "Interesting",
+        commentData: "Interesting",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -93,7 +93,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785801/ajivqjoqm8rqh1ffyxz4.jpg",
 
-        text: "Wow!",
+        commentData: "Wow!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -126,7 +126,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785801/ajivqjoqm8rqh1ffyxz4.jpg",
 
-        text: "This is Amazing!!!",
+        commentData: "This is Amazing!!!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -141,7 +141,7 @@ export const posts = [
         avatarURL:
           "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785799/vna0t0qzkaltov3zfoem.jpg",
 
-        text: "Nice",
+        commentData: "Nice",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
