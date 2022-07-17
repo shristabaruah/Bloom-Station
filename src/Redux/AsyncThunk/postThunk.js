@@ -114,4 +114,79 @@ const dislikePost = createAsyncThunk(
   }
 );
 
-export { getPost, addPost, deletePost, editPost , likePost ,dislikePost };
+const addComment = createAsyncThunk(
+  "posts/addComment",
+  async (
+    { postId, commentData, token, setCommentBtnDisable },
+    { rejectWithValue }
+  ) => {
+    try {
+      setCommentBtnDisable(true);
+      const response = await axios.post(
+        `/api/comments/add/${postId}`,
+        { commentData },
+        { headers: { authorization: token } }
+      );
+      const data = { data: response.data, status: response.status };
+      return data;
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      });
+    } finally {
+      setCommentBtnDisable(false);
+    }
+  }
+);
+
+const editComment = createAsyncThunk(
+  "posts/editComment",
+  async ({ postId, commentId, commentData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/comments/edit/${postId}/${commentId}`,
+        { commentData },
+        { headers: { authorization: token } }
+      );
+      const data = { data: response.data, status: response.status };
+      return data;
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      });
+    }
+  }
+);
+
+const deleteComment = createAsyncThunk(
+  "posts/deleteComment",
+  async ({ postId, commentId, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/comments/delete/${postId}/${commentId}`,
+        {},
+        { headers: { authorization: token } }
+      );
+      const data = { data: response.data, status: response.status };
+      return data;
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      });
+    }
+  }
+);
+export {
+  getPost,
+  addPost,
+  deletePost,
+  editPost,
+  likePost,
+  dislikePost,
+  addComment,
+  editComment,
+  deleteComment,
+};

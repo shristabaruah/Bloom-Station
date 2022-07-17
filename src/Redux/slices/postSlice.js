@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  addComment,
   addPost,
+  deleteComment,
   deletePost,
   dislikePost,
+  editComment,
   editPost,
   getPost,
   likePost,
@@ -83,6 +86,39 @@ const postSlice = createSlice({
     },
     [dislikePost.rejected]: (state, action) => {
       state.isLikeLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [addComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [addComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [deleteComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [deleteComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [editComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [editComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+    },
+    [editComment.rejected]: (state, action) => {
+      state.isLoading = false;
       console.error(action.payload.data.errors[0]);
     },
   },

@@ -6,9 +6,6 @@ import {
   Heading,
   IconButton,
   Image,
-  Input,
-  InputGroup,
-  InputRightElement,
   Popover,
   PopoverArrow,
   PopoverCloseButton,
@@ -17,7 +14,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsThreeDots, BsFillBookmarkFill , BsBookmark} from "react-icons/bs";
+import { BsThreeDots, BsFillBookmarkFill, BsBookmark } from "react-icons/bs";
 import { MdModeEdit, MdDelete } from "react-icons/md";
 import { AiFillLike, AiOutlineLike } from "react-icons/ai";
 import { Comment } from "../Comments/Comments";
@@ -35,6 +32,7 @@ import {
   addToBookmark,
   removeBookmark,
 } from "../../Redux/AsyncThunk/authThunk";
+import { CommentInput } from "../Comments/Comment-Input";
 
 const PostCard = ({ img, post }) => {
   const navigate = useNavigate();
@@ -194,7 +192,7 @@ const PostCard = ({ img, post }) => {
             {post?.likes.likeCount > 0 ? likeMessage() : null}
           </Box>
           <IconButton
-            icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark/>}
+            icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
             _focus={{ borderColor: "transparent" }}
             size="md"
             fontSize="1.5rem"
@@ -203,34 +201,13 @@ const PostCard = ({ img, post }) => {
             onClick={() => bookmarkHandler(post?._id)}
           />
         </Flex>
-        <Flex gap="2">
-          <Avatar size="sm" />
-          <InputGroup>
-            <Input
-              variant="unstyled"
-              border="1px"
-              borderColor="grey.200"
-              borderRadius="50"
-              pr="4"
-              pl="4"
-            />
-            <InputRightElement>
-              <Button
-                variant="ghost"
-                _hover={{ bgColor: "transparent" }}
-                size="sm"
-                mr="7"
-              >
-                REPLY
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </Flex>
-        {post?.comments?.length > 0
-          ? post?.comments.map((comment) => (
-              <Comment key={comment._id} comment={comment} />
-            ))
-          : null}
+        {/* Comments */}
+
+        <CommentInput postId={post._id} />
+
+        {post?.comments.map((comment) => (
+          <Comment key={comment._id} comment={comment} postId={post._id} />
+        ))}
       </Flex>
       {isOpen ? (
         <EditPostModal
