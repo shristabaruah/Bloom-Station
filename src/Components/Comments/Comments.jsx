@@ -42,7 +42,6 @@ const Comment = ({ comment, postId }) => {
       toast.error(`${response.payload.data.errors[0]}`);
     }
   };
-  // console.log(editedComment)
   const editCommentHandler = () => {
     setCommentId(comment._id);
     setEditedComment(comment.commentData);
