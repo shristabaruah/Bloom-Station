@@ -90,6 +90,12 @@ const PostCard = ({ img, post }) => {
       : await dispatch(addToBookmark({ postId, token }));
   };
 
+  const datePost = (date) => {
+    let postDate = new Date(date);
+    postDate = postDate.toDateString().split(" ").slice(1, 4).join(" ");
+    return postDate.slice(0, 6) + "," + postDate.slice(6);
+  };
+
   return (
     <>
       {" "}
@@ -108,19 +114,28 @@ const PostCard = ({ img, post }) => {
             gap="1"
             justifyContent="space-evenly"
             cursor="pointer"
-            onClick={() => navigate(`/profile/${post.username}`)}
+            onClick={() => navigate(`/profile/${post?.username}`)}
           >
             <Avatar
               size="sm"
               src={
-                post.username === user.username
+                post?.username === user?.username
                   ? user.avatarURL
                   : post.avatarURL
               }
             />
-            <Heading as="h3" size="md">
-              {post?.firstName} {post?.lastName}
-            </Heading>
+            <Flex flexDir="column">
+              <Heading as="h3" size="md">
+                {post?.firstName} {post?.lastName}
+              </Heading>
+              <Text
+                fontSize="0.8rem"
+                color="brand.500"
+                fontWeight="medium"
+              >
+               Posted at : {datePost(post?.createdAt)}
+              </Text>
+            </Flex>
           </Flex>
           {isCurrentUser && (
             <Popover>
@@ -187,9 +202,9 @@ const PostCard = ({ img, post }) => {
               fontSize="1.5rem"
               borderRadius="50"
               color={isLiked ? "" : "brand.300"}
-              onClick={() => likeHandler(post._id)}
+              onClick={() => likeHandler(post?._id)}
             />
-            {post?.likes.likeCount > 0 ? likeMessage() : null}
+            {post?.likes?.likeCount > 0 ? likeMessage() : null}
           </Box>
           <IconButton
             icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
@@ -203,9 +218,9 @@ const PostCard = ({ img, post }) => {
         </Flex>
         {/* Comments */}
 
-        <CommentInput postId={post._id} />
+        <CommentInput postId={post?._id} />
 
-        {post?.comments.map((comment) => (
+        {post?.comments?.map((comment) => (
           <Comment key={comment._id} comment={comment} postId={post._id} />
         ))}
       </Flex>

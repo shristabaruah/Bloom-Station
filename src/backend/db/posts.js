@@ -10,16 +10,32 @@ export const posts = [
   {
     _id: "43e41e83-039f-4cd2-bca4-9c3c8c4af422",
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. ",
     likes: {
-      likeCount: 0,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [
+        {
+          firstName: "Mellisa",
+          lastName: "Forde",
+          username: "malibu",
+          avatarURL:
+            "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785799/vna0t0qzkaltov3zfoem.jpg",
+        },
+        {
+          _id: "43e41e83-039f-4cd2-bca4-9c3c8c4af222",
+          firstName: "Stefani",
+          lastName: "Joanne",
+          username: "Loopy",
+          avatarURL:
+            "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785837/y30sp4k6wbihpijaqlkm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Mellisa",
     lastName: "Forde",
     username: "malibu",
-    createdAt: formatDate(),
+    createdAt: new Date("May 26 2020 12:31:25"),
     updatedAt: formatDate(),
     avatarURL:
       "https://res.cloudinary.com/dopc1gfoj/image/upload/v1654785799/vna0t0qzkaltov3zfoem.jpg",
@@ -58,7 +74,7 @@ export const posts = [
   {
     _id: "43e41e83-039f-4cd2-bca4-9c3c8c4af401",
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. ",
     likes: {
       likeCount: 0,
       likedBy: [],
@@ -100,13 +116,13 @@ export const posts = [
         },
       },
     ],
-    createdAt: formatDate(),
+    createdAt: new Date("dec 22 2019 "),
     updatedAt: formatDate(),
   },
   {
     _id: "43e41e83-039f-4cd2-bca4-9c3c8c4afbd5",
     content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. ",
     likes: {
       likeCount: 6,
       likedBy: [],
@@ -148,5 +164,7 @@ export const posts = [
         },
       },
     ],
+    createdAt: new Date("Jan 11 2022 "),
+    updatedAt: formatDate(),
   },
 ];

@@ -1,12 +1,10 @@
 import {
   Box,
-  Image,
   ListIcon,
   ListItem,
   UnorderedList,
   Heading
 } from "@chakra-ui/react";
-import { logo } from "../../Assets";
 import { MdHome, MdOutlineBookmark } from "react-icons/md";
 import { FaHashtag, FaUserCircle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -18,7 +16,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   return (
     <Box position="sticky" top="16px" h="fit-content" m="1rem" ml="3rem">
-      {/* <Image align="center" src={logo} h="50" /> */}
       <Heading  color="brand.400"  >Bloom-Station</Heading>
 
       <UnorderedList
@@ -31,56 +28,64 @@ const Sidebar = () => {
         <ListItem
           cursor="pointer"
           fontWeight="bold"
+          borderRadius="5px"
+          p="5px"
+          w="10rem"
+          textAlign="center"
           color={`${pathname === "/home" ? "brand.500" : "brand.200"}`}
-          _hover={{ color: "brand.500", fontWeight: "bold" }}
+          bgColor={`${pathname === "/home" ? "gray.200" : null}`}
           onClick={() => navigate("/home")}
         >
           <ListIcon
             as={MdHome}
-            color="brand.200"
-            _hover={{ color: "brand.500", fontWeight: "bold" }}
           />
           Home
         </ListItem>
         <ListItem
           cursor="pointer"
+          borderRadius="5px"
+          w="10rem"
+          p="5px"
+          textAlign="center"
           fontWeight="bold"
           color={`${pathname === "/explore" ? "brand.500" : "brand.200"}`}
-          _hover={{ color: "brand.500", fontWeight: "bold" }}
+          bgColor={`${pathname === "/explore" ? "gray.200" : null}`}
           onClick={() => navigate("/explore")}
         >
           <ListIcon
             as={FaHashtag}
-            color="brand.200"
-            _hover={{ color: "brand.500", fontWeight: "bold" }}
           />
           Explore
         </ListItem>
         <ListItem
           cursor="pointer"
           fontWeight="bold"
+          borderRadius="5px"
+          p="5px"
+          w="10rem"
+          textAlign="center"
           color={`${pathname === "/bookmarks" ? "brand.500" : "brand.200"}`}
-          _hover={{ color: "brand.500", fontWeight: "bold" }}
-          onClick={() => navigate("/bookmarks")}
+          bgColor={`${pathname === "/bookmarks" ? "gray.200" : null}`}
+         onClick={() => navigate("/bookmarks")}
         >
           <ListIcon
             as={MdOutlineBookmark}
-            color="brand.200"
-            _hover={{ color: "brand.500", fontWeight: "bold" }}
           />
           Bookmark
         </ListItem>
         <ListItem
           cursor="pointer"
           fontWeight="bold"
+          borderRadius="5px"
+          p="5px"
+          w="10rem"
+          textAlign="center"
           color={`${pathname.includes("/profile")  ? "brand.500" : "brand.200"}`}
-          _hover={{ color: "brand.500", fontWeight: "bold" }}
+          bgColor={`${pathname.includes("/profile") ? "gray.200" : null}`}
           onClick={() => navigate(`/profile/${user.username}`)}
         >
           <ListIcon
             as={FaUserCircle}
-            color="brand.200"
-            _hover={{ color: "brand.500", fontWeight: "bold" }}
           />
           Profile
         </ListItem>
