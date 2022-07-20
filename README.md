@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# [BloomStation](https://bloom-station-jxqwqt29g-shristabaruah.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> BloomStation  is a social media app where people can post texts and pictures and connect with friends and family.
+---
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
 
-In the project directory, you can run:
+<details style="margin: 1rem 0">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li>
+      <a href="#features">Features</a>
+    </li>
+      <li><a href="#Built-With">Built With</a></li>
+    <li><a href="#How-to-Run-Project-Locally">How To Run Project Locally</a></li>
+    <li><a href="#Author-info">Author info</a></li>
+  </ol>
+</details>
 
-### `yarn start`
+##  **About The Project**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![product-screenshot](./src/Assets/bloomstation.gif)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<!-- Features -->
+## **Features**
 
-### `yarn build`
+- Authentication
+  - Login
+  - Signup
+  - Logout
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Posts Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - Crud on Posts
+  - Text as well as Media Posts
+  - User can see his posts and all others post 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Comments Management
 
-### `yarn eject`
+  - Crud on Comments
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Like and Bookmark Management
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - User can Like posts
+   - User can Add / Remove a Post from Bookmarks
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- User Profile Management
 
-## Learn More
+    - User can edit his Avatar and  Bio 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Sort Posts and Search user
+  - Sort posts by Popular
+  - Sort posts by newest as well as oldest added     
+  - Search users by usernames , first and last names  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  
+  ## **How to Run Project Locally**
 
-### Code Splitting
+1. Fork The Project
+2. Open Project in Your IDE
+3. Open Terminal and type **npm install** then press enter
+4. After the Node Modules are installed now run the project with command **npm start**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## **⚙ Built With**
 
-### Analyzing the Bundle Size
+- [ReactJS](https://reactjs.org/)
+- [React Router](https://reactrouter.com/)
+- [Mockbee](https://www.mockbe.netlify.app/)
+- [Chakra UI](https://chakra-ui.com/)
+- [React Toastify](https://www.npmjs.com/package/react-toastify)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔗 Author-info
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://shrista-site.netlify.app/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/shrista-baruah/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ShristaBaruah)
