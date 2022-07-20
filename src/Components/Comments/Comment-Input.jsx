@@ -21,6 +21,8 @@ const CommentInput = ({ postId }) => {
       if (response?.payload.status === 201) {
         toast.success("Comment added");
       } else {
+        console.log("hello");
+
         toast.error(`${response.payload.data.errors[0]}`);
       }
       setCommentData("");

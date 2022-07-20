@@ -7,3 +7,5 @@ export { ProfileCard } from "./Profile/Card-Profile";
 export { ProfileModal } from "./Profile/Edit-Profile-Modal";
 export { Loader } from "./Loader/Loader";
 export { CommentInput } from "./Comments/Comment-Input";
+export { Filter } from "./Filter/Filter";
+export { Search } from "./Search/Search";

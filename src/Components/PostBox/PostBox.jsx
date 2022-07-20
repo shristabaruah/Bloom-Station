@@ -59,7 +59,10 @@ const PostBox = () => {
         />
       </Flex>
       <Flex justifyContent="space-between" m="0.5rem">
-        <Box position="relative" p="0.5rem" _hover={{ bgColor: "grey.200" }}>
+
+        {/* post with image will be implemented later  */}
+        
+        {/* <Box position="relative" p="0.5rem" _hover={{ bgColor: "grey.200" }}>
           <Input
             type="file"
             p="2"
@@ -68,7 +71,7 @@ const PostBox = () => {
             cursor="pointer"
           />
           <BsCardImage fontSize="28px" cursor="pointer" variant="brand" />
-        </Box>
+        </Box> */}
 
         <Button variant="brand" onClick={addPostHandler}>
           Post

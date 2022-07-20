@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Bookmark, Explore, Home, Login, Profile, Signup } from "./Pages";
+import { Bookmark, Error404, Explore, Home, Login, Profile, Signup } from "./Pages";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { RequireAuth } from "./RequireAuth/requireAuth";
@@ -54,6 +54,7 @@ function App() {
             </RequireAuth>
           }
         />
+        <Route path="*" element={<Error404/>} />
       </Routes>
     </>
   );

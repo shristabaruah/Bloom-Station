@@ -1,2 +1,3 @@
 import logo from "./bloomStation.webp";
-export { logo };
+import image from "./image.svg";
+export { logo , image };
